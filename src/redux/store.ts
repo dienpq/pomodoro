@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userSlice from "./slices/userSlice";
+import timerSlice from "./slices/timerSlice";
 
 const store = configureStore({
     reducer: {
-        user: userSlice
+        timer: timerSlice
     },
 });
 

@@ -1,15 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CountdownTimer from "./CountdownTimer";
+import { useSelector } from "react-redux";
+import { RootState } from "../types";
+
 function classNames(...classes: (string | undefined | null | false)[]): string {
     return classes.filter(Boolean).join(' ');
 }
 
 const Pomodoro = () => {
+    const timer = useSelector((state: RootState) => state.timer);
+
     const [tabs, setTabs] = useState([
-        { name: 'Pomodoro', seconds: 25 * 60, current: true },
-        { name: 'Short Break', seconds: 5 * 60, current: false },
-        { name: 'Long Break', seconds: 15 * 60, current: false },
+        { name: 'Pomodoro', seconds: timer.pomodoro, current: true },
+        { name: 'Short Break', seconds: timer.shortBreak, current: false },
+        { name: 'Long Break', seconds: timer.longBreak, current: false },
     ]);
+
+    useEffect(() => {
+        setTabs(tabPrev => tabPrev.map(tab => {
+            let seconds;
+            switch(tab.name) {
+                case 'Pomodoro':
+                    seconds = timer.pomodoro;
+                    break;
+                case 'Short Break':
+                    seconds = timer.shortBreak;
+                    break;
+                case 'Long Break':
+                    seconds = timer.longBreak;
+                    break;
+                default:
+                    seconds = tab.seconds;
+            }
+            return { ...tab, seconds: seconds };
+        }));
+    }, [timer]);
 
     const changeTab = (tabName: string) => {
         setTabs(tabs.map(tab => ({
