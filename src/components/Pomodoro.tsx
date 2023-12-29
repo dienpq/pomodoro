@@ -81,7 +81,7 @@ const Pomodoro = () => {
                         </div>
                     </div>
                 </div>
-                <div className="rounded-full py-12 mt-10 shadow border-2 shadow-orange-500 bg-white">
+                <div className="rounded-full py-14 mt-10 shadow border-2 shadow-orange-500 bg-white">
                 {(tabs.filter(tab => tab.current)).map(tab =>
                     <CountdownTimer seconds={tab.seconds} />
                 )}
