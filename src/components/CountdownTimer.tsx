@@ -57,7 +57,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ seconds }) => {
   return (
     <div className='rounded-xl p-10'>
       <div className='font-semibold text-6xl'>
-        {timeLeft > 0 ? <span>{formatSeconds(timeLeft)}</span> : <span>Hết giờ!</span>}
+        {timeLeft === 0 && isActive ? <span className='text-red-500'>Hết giờ!</span> : <span>{formatSeconds(timeLeft)}</span> }
       </div>
       <div className='flex gap-5 mt-8 justify-center'>
         <button onClick={handleStartStop} className='rounded-full bg-indigo-600 px-5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>

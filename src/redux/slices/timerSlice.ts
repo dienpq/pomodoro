@@ -11,13 +11,13 @@ const timerSlice = createSlice({
     initialState: initialState,
     reducers: {
         changePomodoro: (state, action) => {
-            state.pomodoro = action.payload;
+            state.pomodoro = action.payload.trim() ? action.payload.trim() : 0;
         },
         changeShortBreak: (state, action) => {
-            state.shortBreak = action.payload;
+            state.shortBreak = action.payload.trim() ? action.payload.trim() : 0;
         },
         changeLongBreak: (state, action) => {
-            state.longBreak = action.payload;
+            state.longBreak = action.payload.trim() ? action.payload.trim() : 0;
         }
     },
 });

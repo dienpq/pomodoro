@@ -62,7 +62,7 @@ const Pomodoro = () => {
                                 ))}
                             </select>
                         </div>
-                        <div className="hidden sm:block">
+                        <div className="hidden sm:block  p-2 rounded-md">
                             <nav className="flex space-x-4" aria-label="Tabs">
                                 {tabs.map((tab) => (
                                     <div
@@ -81,9 +81,11 @@ const Pomodoro = () => {
                         </div>
                     </div>
                 </div>
+                <div className="rounded-full py-12 mt-10 shadow border-2 shadow-orange-500 bg-white">
                 {(tabs.filter(tab => tab.current)).map(tab =>
                     <CountdownTimer seconds={tab.seconds} />
                 )}
+                </div>
             </div>
         </main>
     )
